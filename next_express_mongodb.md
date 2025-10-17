@@ -236,7 +236,7 @@ export async function carregarNomesAPI() {
 }
 
 // POST /api/nomes - Adicionar novo nome
-export async function adicionarNomeAPI(nome) {
+export async function adicionarFilmesAPI(nome) {
   try {
     const response = await fetch('/api/nomes', {
       method: 'POST',
@@ -265,10 +265,10 @@ export async function adicionarNomeAPI(nome) {
 
 ## 🎨 3️⃣ Página inicial (`src/pages/index.js`)
 
-No index.js só chamei dois componentes: VerNomes e AdicionarNomes.
+No index.js só chamei dois componentes: VerNomes e AdicionarFilmes.
 
 ```javascript
-import AdicionarNomes from '../components/AdicionarNomes';
+import AdicionarFilmes from '../components/AdicionarFilmes';
 import VerNomes from '../components/VerNomes';
 
 export default function Home() {
@@ -276,7 +276,7 @@ export default function Home() {
     <div className="bg-gray-100 min-h-screen p-5">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
         <VerNomes />
-        <AdicionarNomes />
+        <AdicionarFilmes />
       </div>
     </div>
   );
@@ -327,22 +327,22 @@ export default function VerNomes() {
 }
 ```
 
-### AdicionarNomes.jsx
+### AdicionarFilmes.jsx
 
 Este componente importa o POST do api.js e permite adicionar novos nomes à base de dados.
 
 ```javascript
 import { useState } from 'react';
-import { adicionarNomeAPI } from '../services/api';
+import { adicionarFilmeAPI } from '../services/api';
 
-export default function AdicionarNomes() {
+export default function AdicionarFilmes() {
   const [novoNome, setNovoNome] = useState('');
 
-  async function adicionarNome(e) {
+  async function adicionarFilme(e) {
     e.preventDefault();
     if (!novoNome) return;
     try {
-      await adicionarNomeAPI(novoNome);
+      await adicionarFilmeAPI(novoNome);
       setNovoNome('');
     } catch (error) {
       console.error('Erro ao adicionar nome:', error);
@@ -353,7 +353,7 @@ export default function AdicionarNomes() {
     <div className="bg-white rounded-lg shadow-md p-4 min-w-72 h-fit">
       <h2 className="text-lg font-semibold mb-3">Adicionar Nomes</h2>
       
-      <form onSubmit={adicionarNome} className="flex gap-1 mb-3">
+      <form onSubmit={adicionarFilme} className="flex gap-1 mb-3">
         <input
           type="text"
           value={novoNome}

@@ -18,7 +18,7 @@ export async function carregarNomesAPI() {
 }
 
 // POST /api/nomes - Adicionar novo nome
-export async function adicionarNomeAPI(nome) {
+export async function adicionarFilmeAPI(nome) {
   try {
     const response = await fetch('/api/nomes', {
       method: 'POST',

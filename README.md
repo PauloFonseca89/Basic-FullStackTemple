@@ -13,7 +13,7 @@ Uma aplicação fullstack para ver e adicionar nomes desenvolvida com Next.js, E
 
 ### Interface Única com 2 Componentes:
 1. **VerNomes.jsx** - Visualizar os nomes existentes na base de dados.
-2. **AdicionarNomes.jsx** - Adicionar um nome novo à base de dados.
+2. **AdicionarFilmes.jsx** - Adicionar um nome novo à base de dados.
 
 ### API REST com 2 Endpoints:
 - `GET /api/nomes`
@@ -55,7 +55,7 @@ npm run dev
 │   ├── Nome.js                 # Schema Nomes
 ├── src/
 │   ├── components/
-│   │   ├── AdicionarNomes.jsx
+│   │   ├── AdicionarFilmes.jsx
 │   │   ├── VerNomes.jsx
 │   ├── pages/
 │   │   ├── index.js           # Página principal
