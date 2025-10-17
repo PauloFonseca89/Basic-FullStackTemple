@@ -18,34 +18,34 @@ const Nome = require('./models/Nome');
 
 // ===== ENDPOINTS DA API =====
 
-// GET /api/nomes - Retorna todos os nomes existentes
-app.get('/api/nomes', async (req, res) => {
+// GET /api/Filmes - Retorna todos os nomes existentes
+app.get('/api/Filmes', async (req, res) => {
   try {
-    const nomes = await Nome.find().sort({ nome: 1 });
-    res.json(nomes);
+    const Filmes = await Filme.find().sort({ Filme: 1 });
+    res.json(Filmes);
   } catch (error) {
-    console.error('Erro ao carregar nomes:', error);
+    console.error('Erro ao carregar Filmes:', error);
     res.status(500).json({ erro: 'Erro interno do servidor' });
   }
 });
 
-// POST /api/nomes - Adiciona um novo nome à coleção "nomes"
-app.post('/api/nomes', async (req, res) => {
+// POST /api/Filmes - Adiciona um novo nome à coleção "nomes"
+app.post('/api/Filmes', async (req, res) => {
   try {
-    const { nome } = req.body;
+    const { Filme } = req.body;
     
-    if (!nome || !nome.trim()) {
-      return res.status(400).json({ erro: 'Nome é obrigatório' });
+    if (!Filme || !Filme.trim()) {
+      return res.status(400).json({ erro: 'filme é obrigatório' });
     }
 
-    const novoNome = new Nome({ nome: nome.trim() });
-    const nomeSalvo = await novoNome.save();
-    res.status(201).json(nomeSalvo);
+    const novoFilme = new Nome({ Filme: Filme.trim() });
+    const FilmeSalvo = await novoFilme.save();
+    res.status(201).json(FilmeSalvo);
   } catch (error) {
     if (error.code === 11000) {
-      return res.status(400).json({ erro: 'Este nome já existe' });
+      return res.status(400).json({ erro: 'Este Filme já existe' });
     }
-    console.error('Erro ao criar nome:', error);
+    console.error('Erro ao criar Filme:', error);
     res.status(500).json({ erro: 'Erro interno do servidor' });
   }
 });
