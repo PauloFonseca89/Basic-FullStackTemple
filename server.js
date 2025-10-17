@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // Esta constante é relativa às coleções da tua base de dados e deves acrescentar mais se for o caso
-const Nome = require('./models/Nome');
+const Nome = require('./models/Filme');
 
 
 
@@ -21,7 +21,7 @@ const Nome = require('./models/Nome');
 // GET /api/Filmes - Retorna todos os nomes existentes
 app.get('/api/Filmes', async (req, res) => {
   try {
-    const Filmes = await Filme.find().sort({ Filme: 1 });
+    const Filmes = await Filmes.find().sort({ Filme: 1 });
     res.json(Filmes);
   } catch (error) {
     console.error('Erro ao carregar Filmes:', error);
@@ -29,7 +29,7 @@ app.get('/api/Filmes', async (req, res) => {
   }
 });
 
-// POST /api/Filmes - Adiciona um novo nome à coleção "nomes"
+// POST /api/Filmes - Adiciona um novo nome à coleção "Filmes"
 app.post('/api/Filmes', async (req, res) => {
   try {
     const { Filme } = req.body;
